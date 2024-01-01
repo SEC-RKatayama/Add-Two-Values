@@ -21,6 +21,8 @@ colcon build --symlink-install --packages-select add_two_values
 一方でノードを起動（うまくいっていればTab補完が効く）。
 ```
 source install/setup.bash
+```
+```
 ros2 launch add_two_values add_two_values.launch.py
 ```
 うまくいっていれば、そうとわかる。
@@ -29,7 +31,11 @@ ros2 launch add_two_values add_two_values.launch.py
 足す数はval1とval2と名付けてある。
 ```
 source install/setup.bash
+```
+```
 ros2 topic pub --once /val1 std_msgs/msg/Float64 "{data: <数値>}"
+```
+```
 ros2 topic pub --once /val2 std_msgs/msg/Float64 "{data: <数値>}"
 ```
 入力したら足し算の結果が1つ目のターミナルに表示される。
