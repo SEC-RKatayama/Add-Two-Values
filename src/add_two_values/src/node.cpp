@@ -41,25 +41,25 @@ void AddTwoValues::val2_sub(std_msgs::msg::Float64::SharedPtr msg){
 
 
 void AddTwoValues::timerCallback(){
-    answer_ = val1_ + val2_;
+    answer_ = val1_ + val2_;    // メンバ変数を足す
     printAnswer();
 }
 
 
 void AddTwoValues::set_val1(const double val){
-    val1_ = val;
+    val1_ = val;    // メンバ変数を更新する
     return;
 }
 
 
 void AddTwoValues::set_val2(const double val){
-    val2_ = val;
+    val2_ = val;    // メンバ変数を更新する
     return;
 }
 
 
 void AddTwoValues::printAnswer(){
-    RCLCPP_INFO(rclcpp::get_logger("add_two_values"), "%lf + %lf = %lf", val1_, val2_, answer_);  // ROS2版printfみたいなもの。第一引数については深く考えないで。第二引数以降はprintfと同じ。
+    RCLCPP_INFO(rclcpp::get_logger("add_two_values"), "%lf + %lf = %lf", val1_, val2_, answer_);  // ROS2版printfみたいなもの。第一引数については深く考えないで。第二引数以降はprintfと同じ。rclcpp.hppに入ってる。
     return;
 }
 

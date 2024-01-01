@@ -11,7 +11,7 @@ class AddTwoValues : public rclcpp::Node {// rclcpp::Nodeを継承すること�
         AddTwoValues(const rclcpp::NodeOptions& options); // ここでコールバック関数を定義する
 
         // デストラクタ
-        ~AddTwoValues();
+        ~AddTwoValues();    // 何もしない
 
 
         /**
@@ -38,7 +38,7 @@ class AddTwoValues : public rclcpp::Node {// rclcpp::Nodeを継承すること�
         double answer_;
 
         void timerCallback();   // タイマーコールバック関数
-        std::function<void()> timer_func_;      // create_wall_timer()にタイマーコールバック関数を渡すためのもの
+        std::function<void()> timer_func_;      // create_wall_timer()にタイマーコールバック関数を渡すためのラッパー
         rclcpp::TimerBase::SharedPtr timer_;    // タイマーコールバック関数を時間周期で作動させるもの。SharedPtrはポインタのこと。つまりこれはポインタ変数。
         
 
@@ -49,11 +49,11 @@ class AddTwoValues : public rclcpp::Node {// rclcpp::Nodeを継承すること�
         void val1_sub(const std_msgs::msg::Float64::SharedPtr msg); // val1のサブスクリプションのコールバック関数
         void val2_sub(const std_msgs::msg::Float64::SharedPtr msg); // val2のサブスクリプションのコールバック関数
 
-        /// @brief create_subscription()にコールバック関数を渡すためのもの
+        /// @brief create_subscription()にコールバック関数を渡すためのラッパー
         std::function<void(std::shared_ptr<std_msgs::msg::Float64>)> val1_func_;
         std::function<void(std::shared_ptr<std_msgs::msg::Float64>)> val2_func_;
 
-        /// @brief val1のサブスクライバ。SharedPtrはポインタのこと。つまりこれはポインタ変数。
+        /// @brief val1のサブスクライバ。SharedPtrはポインタのこと。つまりこれはサブスクライバの実体を指すポインタ変数。
         rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr val1_sub_;
         rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr val2_sub_;
         
